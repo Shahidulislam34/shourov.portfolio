@@ -694,17 +694,21 @@ img {
     }
 
     #home .addaccount {
-        grid-template-columns: 1fr;   /* 1 col on very small screens */
+        grid-template-columns: 1fr 1fr;   /* 2 cols even on extra small */
     }
 
     #home .cv {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
         gap: 12px;
     }
 
     #home .cv button {
-        width: 80%;
+        font-size: 13px;
+        padding: 8px 10px;
+        min-width: auto;
+        width: auto;
     }
 
     .main .profile > img {
