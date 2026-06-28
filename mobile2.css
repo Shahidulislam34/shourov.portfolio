@@ -653,33 +653,24 @@ img {
     }
 
     #project .project-body {
-        flex-direction: column;  /* stack cards vertically */
         padding: 8px;
-        gap: 20px;
-    }
-
-    /* Hide the desktop ghost ::after that reserves 50% width */
-    #project .project-body::after {
-        display: none;
+        gap: 30px;
     }
 
     #project .project-body .project-type {
-        width     : 100%;
-        max-width : 100%;
-        flex      : 0 0 100%;   /* must override desktop's flex:0 0 calc(50%-50px) */
-        margin    : 0;
-        padding   : 18px;
-        box-sizing: border-box;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 18px;
     }
 
     #project .project-body .project-type p {
         font-size: 15px;
-        padding  : 6px 18px;
     }
 
     #project .project-body .project-type button {
+        width: 60%;
         font-size: 15px;
-        margin   : 14px 18px 18px;
     }
 
     /* ── Certificates: single column, centered ── */
