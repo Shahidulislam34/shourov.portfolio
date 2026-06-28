@@ -361,7 +361,8 @@
     gap:50px;
 }
 #education .degree .degree-type{
-    width:calc(33% - 50px);
+    width:calc(50% - 50px);
+    flex: 0 0 calc(50% - 50px);
     height:auto;
     border-radius:10px;
     background-color:#1D1D1D;
@@ -375,6 +376,13 @@
 
     transition-duration:0.2s;
     transition-timing-function:linear;
+}
+
+/* Ghost element keeps last-row item left-aligned */
+#education .degree::after{
+    content:'';
+    flex: 0 0 calc(50% - 50px);
+    width: calc(50% - 50px);
 }
 #education .degree .degree-type:hover{
     transform:scale(1.05);
