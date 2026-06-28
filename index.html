@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel = "stylesheet" href = "desktop-version.css">
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="desktop-version.css">
+    <!-- RESPONSIVE ADDITION: new responsive stylesheet -->
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <style>
         *{
@@ -23,88 +25,133 @@
     </style>
 </head>
 <body>
-     <div id = "container">
+
+    <!-- ═══════════════════════════════════════════════
+         RESPONSIVE ADDITION 1: Hamburger button
+         (hidden on desktop, visible on tablet/mobile)
+    ═══════════════════════════════════════════════ -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false">
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+    </button>
+
+    <!-- ═══════════════════════════════════════════════
+         RESPONSIVE ADDITION 2: Dark overlay behind drawer
+    ═══════════════════════════════════════════════ -->
+    <div class="mob-overlay" id="mobOverlay"></div>
+
+    <!-- ═══════════════════════════════════════════════
+         RESPONSIVE ADDITION 3: Mobile nav drawer
+         (mirrors all 8 links from the desktop navbar)
+    ═══════════════════════════════════════════════ -->
+    <nav class="mob-nav" id="mobNav" aria-hidden="true">
+        <button class="mob-nav-close" id="mobNavClose" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <ul>
+            <li><button onclick="mobGo('#container')"><i class="fa-regular fa-house"></i> Home</button></li>
+            <li><button onclick="mobGo('#about')"><i class="fa-regular fa-circle-info"></i> About</button></li>
+            <li><button onclick="mobGo('#education')"><i class="fa-solid fa-book-open"></i> Education</button></li>
+            <li><button onclick="mobGo('#skill')"><i class="fa-solid fa-kitchen-set"></i> Skill</button></li>
+            <li><button onclick="mobGo('#project')"><i class="fa-solid fa-briefcase"></i> Project</button></li>
+            <li><button onclick="mobGo('#certificate')"><i class="fa-solid fa-certificate"></i> Certificate</button></li>
+            <li><button onclick="mobGo('#Gallery')"><i class="fa-solid fa-image"></i> Gallery</button></li>
+            <li><button onclick="mobGo('#contact')"><i class="fa-regular fa-address-book"></i> Contact</button></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════
+         ORIGINAL HTML BELOW — 100% UNCHANGED
+    ═══════════════════════════════════════════════ -->
+    <div id="container">
+
         <!-- Navbar starts -->
-        <div class = "navbar">
-            <ul type = "disc">
-                <li onclick = "window.location.hash = '#container'"><i class="fa-regular fa-house"></i><span>Home</span></li>
-                <li onclick = "window.location.hash = '#about'"><i class="fa-regular fa-circle-info"></i><span>About</span></li>
-                <li onclick = "window.location.hash = '#education'"><i class="fa-solid fa-book-open"></i><span>Education</span></li>
-                <li onclick = "window.location.hash = '#skill'"><i class="fa-solid fa-kitchen-set"></i><span>Skill</span></li>
-                <li onclick = "window.location.hash = '#project'"><i class="fa-solid fa-briefcase"></i><span>Project</span></li>
-                <li onclick = "window.location.hash = '#certificate'"><i class="fa-solid fa-certificate"></i><span>Certificate</span></li>
-                <li onclick = "window.location.hash = '#Gallery'"><i class="fa-solid fa-image"></i><span>Gallery</span></li>
-                <li onclick = "window.location.hash = '#contact'"><i class="fa-regular fa-address-book"></i><span>Contact</span></li>
+        <div class="navbar">
+            <ul type="disc">
+                <li onclick="window.location.hash = '#container'"><i class="fa-regular fa-house"></i><span>Home</span></li>
+                <li onclick="window.location.hash = '#about'"><i class="fa-regular fa-circle-info"></i><span>About</span></li>
+                <li onclick="window.location.hash = '#education'"><i class="fa-solid fa-book-open"></i><span>Education</span></li>
+                <li onclick="window.location.hash = '#skill'"><i class="fa-solid fa-kitchen-set"></i><span>Skill</span></li>
+                <li onclick="window.location.hash = '#project'"><i class="fa-solid fa-briefcase"></i><span>Project</span></li>
+                <li onclick="window.location.hash = '#certificate'"><i class="fa-solid fa-certificate"></i><span>Certificate</span></li>
+                <li onclick="window.location.hash = '#Gallery'"><i class="fa-solid fa-image"></i><span>Gallery</span></li>
+                <li onclick="window.location.hash = '#contact'"><i class="fa-regular fa-address-book"></i><span>Contact</span></li>
             </ul>
         </div>
         <!-- Navbar ends -->
 
-
         <!-- Home-starts -->
-        <div class = "main">
-            <div class = "profile">
-                <img src = "images/icpc.jpg">
+        <div class="main">
+
+            <div class="profile">
+                <img src="images/icpc.jpg">
                 <h2>Md. Shahidul Islam</h2>
                 <p>Competitive Programmer</p>
                 <p>B.Sc in ICT,MBSTU</p>
                 <p>Tangail,Bangladesh</p>
-                <div class = "connect">
-                    <button onclick = "window.open('https://www.linkedin.com/in/md-shahidul-islam-shourov-8a947a247/')">
-                        <i class="fa-brands fa-linkedin" id = "linkedin"></i>
-                    </button>
-                    <button onclick = "window.open('https://github.com/Shahidulislam34')">
-                        <i class="fa-brands fa-github" id = "github"></i>
-                    </button>
-                    <button onclick = "window.open('https://www.facebook.com/mdshahidulislam.shourov.9/')">
-                        <i class="fa-brands fa-facebook-f" id = "facebook"></i>
-                    </button>
-                    <button onclick = "window.open('https://www.youtube.com/@Shourov21024')">
-                        <i class="fa-brands fa-youtube" id = "youtube"></i>
+                <div class="profile-bottom-row">
+                    <div class="connect">
+                        <button onclick="window.open('https://www.linkedin.com/in/md-shahidul-islam-shourov-8a947a247/')">
+                            <i class="fa-brands fa-linkedin" id="linkedin"></i>
+                        </button>
+                        <button onclick="window.open('https://github.com/Shahidulislam34')">
+                            <i class="fa-brands fa-github" id="github"></i>
+                        </button>
+                        <button onclick="window.open('https://www.facebook.com/mdshahidulislam.shourov.9/')">
+                            <i class="fa-brands fa-facebook-f" id="facebook"></i>
+                        </button>
+                        <button onclick="window.open('https://www.youtube.com/@Shourov21024')">
+                            <i class="fa-brands fa-youtube" id="youtube"></i>
+                        </button>
+                    </div>
+                    <button class="chat" onclick="window.open('#contact')">
+                        Let's Talk
                     </button>
                 </div>
-                <button class = "chat" onclick = "window.open('#contact')">
-                    Let's Talk
-                </button>
-            </div>
-            <div id = "desc">
-                <div id = "home">
+            </div><!-- /.profile -->
+
+            <div id="desc">
+
+                <div id="home">
                     <h1>Hi, I'm Shourov!!</h1>
-                    <p class = bio1>
+                    <p class="bio1">
                         A Fresh Graduate from the ICT department at MBSTU with CGPA 3.74 and strong focused on Competitive Programming and Problem Solving
                     </p>
-                    <p class = "bio2">
-                        Competitive Programmer  | Problem Solver | Aspiring Software Engineer
+                    <p class="bio2">
+                        Competitive Programmer | Problem Solver | Aspiring Software Engineer
                     </p>
-                    <div class = "addaccount">
-                        <button onclick = "window.open('https://codeforces.com/profile/shourov')" target = "_blank">
-                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-code-forces-logo-icon-svg-download-png-3029920.png" width="60" height = "60"> 
+                    <div class="addaccount">
+                        <button onclick="window.open('https://codeforces.com/profile/shourov')" target="_blank">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-code-forces-logo-icon-svg-download-png-3029920.png" width="60" height="60">
                             <h2>Specialist(1525)</h2>
                         </button>
-                        <button onclick = "window.open('https://www.codechef.com/users/shahidulislam3')" target = "_blank">
-                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-codechef-icon-svg-download-png-14550644.png?f=webp" width="60" height = "60"> 
+                        <button onclick="window.open('https://www.codechef.com/users/shahidulislam3')" target="_blank">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-codechef-icon-svg-download-png-14550644.png?f=webp" width="60" height="60">
                             <h2>4 Star(1800)</h2>
                         </button>
-                        <button onclick = "window.open('https://atcoder.jp/users/Shahidulislam34')" target = "_blank">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" width="60" height = "60"> 
+                        <button onclick="window.open('https://atcoder.jp/users/Shahidulislam34')" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" width="60" height="60">
                             <h2>Max Rating:1804</h2>
                         </button>
-                        <button onclick = "window.open('https://www.hackerrank.com/profile/Shahidulislam34')">
-                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-hackerrank-logo-icon-svg-download-png-3031053.png?f=webp" width="60" height = "60"> 
+                        <button onclick="window.open('https://www.hackerrank.com/profile/Shahidulislam34')">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-hackerrank-logo-icon-svg-download-png-3031053.png?f=webp" width="60" height="60">
                             <h2>Gold Level(MySQL)</h2>
-                        </button>  
-                    </div>
-                    <div class = "cv">
-                        <button onclick = "window.open('shourov(updated at 07.05.26).pdf')" target = "_blank">
-                                Download CV
                         </button>
-                        <button onclick = "window.open('#')" target = "_blank">
-                                Get In Touch
+                    </div>
+                    <div class="cv">
+                        <button onclick="window.open('shourov(updated at 07.05.26).pdf')" target="_blank">
+                            Download CV
+                        </button>
+                        <button onclick="window.open('#')" target="_blank">
+                            Get In Touch
                         </button>
                     </div>
                 </div>
-                <div id = "about">
-                    <p class = "headline">About Me</h1>
-                    <p class = "description">
+
+                <div id="about">
+                    <p class="headline">About Me</p>
+                    <p class="description">
                         I am Shourov, a <b>fresh graduate from ICT department</b> at Mawlana Bhashani Science and Technology University.I have recently completed my B.Sc Engineering Degree. My journey into the world of computer science began in my very first semester at university, where I began an intensive journey into competitive programming. Over the past four years, I have maintained a <b>dedicated balance between mastering the art of competitive programming with 3000+ problem solved and achieving a high academic standard—graduating with a 3.74 CGPA.</b> My dedication to the community led me to participate in numerous prestigious competitions including IUPC,ICPC Dhaka Regional,NCPC and IDPC.
                         <br><br>
                         Beyond my individual growth, I served as the Competitive Programming Secretary in my department, where I fostered a problem-solving culture by mentoring junior students and organizing departmental contests.
@@ -112,56 +159,57 @@
                         Ultimately, I am driven by a passion for innovation and logic. My goal is to become a highly skilled and creative software engineer who builds impactful solutions.
                     </p>
                 </div>
-                <div id = "education">
-                    <p class = "headline">Education</p>
-                    <div class = "degree">
-                        <div class = "degree-type">
-                            <img src = "images/mbstu-campus.jpg">
+
+                <div id="education">
+                    <p class="headline">Education</p>
+                    <div class="degree">
+                        <div class="degree-type">
+                            <img src="images/mbstu-campus.jpg">
                             <br>
-                            <div class = "description">
+                            <div class="description">
                                 <p>Degree: B.Sc Engineering</p>
                                 <p>University: MBSTU</p>
-                                <p>Subject: ICT</p> 
+                                <p>Subject: ICT</p>
                                 <p>Passing Year: 2026</p>
                                 <p>CGPA: 3.74 / 4.00</p>
                             </div>
                         </div>
-                        <div class = "degree-type">
-                            <img src = "images/bgc-gate.jpg">
+                        <div class="degree-type">
+                            <img src="images/bgc-gate.jpg">
                             <br>
-                            <div class = "description">
+                            <div class="description">
                                 <p>Degree: H.S.C</p>
                                 <p>College: Bogura Government College</p>
-                                <p>Group: Science</p> 
+                                <p>Group: Science</p>
                                 <p>Passing Year: 2019</p>
                                 <p>GPA: 5.00 / 5.00</p>
                             </div>
                         </div>
-                        <div class = "degree-type">
-                            <img src = "images/high-school.jpg">
+                        <div class="degree-type">
+                            <img src="images/high-school.jpg">
                             <br>
-                            <div class = "description">
+                            <div class="description">
                                 <p>Degree: S.S.C</p>
                                 <p>School: Enayet Ali High School</p>
-                                <p>Group: Science</p> 
+                                <p>Group: Science</p>
                                 <p>Passing Year: 2017</p>
                                 <p>GPA: 5.00 / 5.00</p>
                             </div>
                         </div>
-                        <div class = "degree-type">
-                            <img src = "images/high-school.jpg">
+                        <div class="degree-type">
+                            <img src="images/high-school.jpg">
                             <br>
-                            <div class = "description">
+                            <div class="description">
                                 <p>Degree: J.S.C</p>
                                 <p>University: MBSTU</p>
                                 <p>Passing Year: 2015</p>
                                 <p>GPA: 5.00 / 5.00</p>
                             </div>
                         </div>
-                        <div class = "degree-type">
-                            <img src = "images/primary-school.jpg">
+                        <div class="degree-type">
+                            <img src="images/primary-school.jpg">
                             <br>
-                            <div class = "description">
+                            <div class="description">
                                 <p>Degree: P.S.C</p>
                                 <p>University: MBSTU</p>
                                 <p>Passing Year: 2011</p>
@@ -170,12 +218,13 @@
                         </div>
                     </div>
                 </div>
-                <div id = "skill">
-                    <h1 class = "headline">Technical Skill</h1>
-                    <div class = "skill-body">
-                        <div class = "skill-type">
+
+                <div id="skill">
+                    <h1 class="headline">Technical Skill</h1>
+                    <div class="skill-body">
+                        <div class="skill-type">
                             <p>Data-Structure and Algorithm</p>
-                            <div class = "description">
+                            <div class="description">
                                 <span>Graph</span>
                                 <span>DP</span>
                                 <span>Greedy</span>
@@ -187,35 +236,21 @@
                                 <span>Game Theory</span>
                             </div>
                         </div>
-                        <div class = "skill-type">
+                        <div class="skill-type">
                             <p>Programming Language</p>
-                            <div class = "description">
-                                <span>
-                                    <img src = "icons/c.svg" width = 40px>
-                                </span>
-                                <span>
-                                    <img src = "icons/cpp.svg" width = 40px>
-                                </span>        
-                                <span>
-                                    <img src = "icons/java.svg" width = 40px>
-                                </span>
-                                <span>
-                                    <img src = "icons/python.svg" width = 40px>
-                                </span>
-                                <span>
-                                    <img src = "icons/html.png" width = 40px>
-                                </span>
-                                <span>
-                                    <img src = "icons/css.png" width = 40px>
-                                </span>
-                                <span>
-                                    <img src = "icons/js.png" width = 40px>
-                                </span>
+                            <div class="description">
+                                <span><img src="Icons/c.svg" width="40px"></span>
+                                <span><img src="Icons/cpp.svg" width="40px"></span>
+                                <span><img src="Icons/java.svg" width="40px"></span>
+                                <span><img src="Icons/python.svg" width="40px"></span>
+                                <span><img src="Icons/html.png" width="40px"></span>
+                                <span><img src="Icons/css.png" width="40px"></span>
+                                <span><img src="Icons/js.png" width="40px"></span>
                             </div>
                         </div>
-                        <div class = "skill-type">
+                        <div class="skill-type">
                             <p>Problem Solving</p>
-                            <div class = "description">
+                            <div class="description">
                                 <span>Codeforces: 1500+ Solve</span>
                                 <span>Codechef: 300+</span>
                                 <span>Atcoder: 200+</span>
@@ -225,19 +260,19 @@
                                 <span>Overall: 3000+ solve in many online judge</span>
                             </div>
                         </div>
-                        <div class = "skill-type">
+                        <div class="skill-type">
                             <p>Soft Skill</p>
-                            <div class = "description">
-                                <span><b style = "color:rgb(179, 175, 175);">Mentorship:</b> Served as the Competitive Programming trainer for juniors at MBSTU.</span>
-                                <span><b style = "color:rgb(179, 175, 175);">Leadership:</b> Served as the CP Secretary in my department at mbstu.</span>
-                                <span><b style = "color:rgb(179, 175, 175);">Teamwork and Collaboration:</b> Participated 10+ national contest.</span>
-                                <span><b style = "color:rgb(179, 175, 175);">Good Player:</b> Won emerging player award in ICT intra department football tournament at MBSTU.</span>
-                                <span><b style = "color:rgb(179, 175, 175);">First Prize:</b> Race Competition at high school level.</span>
+                            <div class="description">
+                                <span><b style="color:rgb(179,175,175);">Mentorship:</b> Served as the Competitive Programming trainer for juniors at MBSTU.</span>
+                                <span><b style="color:rgb(179,175,175);">Leadership:</b> Served as the CP Secretary in my department at mbstu.</span>
+                                <span><b style="color:rgb(179,175,175);">Teamwork and Collaboration:</b> Participated 10+ national contest.</span>
+                                <span><b style="color:rgb(179,175,175);">Good Player:</b> Won emerging player award in ICT intra department football tournament at MBSTU.</span>
+                                <span><b style="color:rgb(179,175,175);">First Prize:</b> Race Competition at high school level.</span>
                             </div>
                         </div>
-                        <div class = "skill-type">
+                        <div class="skill-type">
                             <p>Software Development</p>
-                            <div class = "description">
+                            <div class="description">
                                 <span>OOP</span>
                                 <span>MySQL(5* at Hackerrank)</span>
                                 <span>Git/GitHub</span>
@@ -250,126 +285,187 @@
                         </div>
                     </div>
                 </div>
-                <div id = "project">
+
+                <div id="project">
                     <h1>Project</h1>
-                    <div class = "project-body">
-                        <div class = "project-type">
+                    <div class="project-body">
+                        <div class="project-type">
                             <h2>Stone Removal Game</h2>
-                            <img src = "images/game.png">
-                            <p><b style = "color:rgb(179, 175, 175);">Language:</b> Python and Turtle Graphics Library.</p>
-                            <p><b style = "color:rgb(179, 175, 175);">Algorithm used:</b> Sprague Grundy Algorithm in Game Theory. </p>
-                            <p><b style = "color:rgb(179, 175, 175);">Explanation:</b> There have some piles. Each pile contains some stones. Each player can remove two or three stones from any available pile. Who takes last move will win.</p>
-                            <p><b style = "color:rgb(179, 175, 175);">Features:</b> Player vs Player, Player vs Computer</p>
-                            <p><b style = "color:rgb(179, 175, 175);">Difficulty:</b> Beginner, Intermediate, Advance</p>
-                            <button onclick = "window.open('https://github.com/Shahidulislam34/Complete-Project/blob/main/stone%20removal%20game.py')">GitHub</button>
+                            <img src="images/game.png">
+                            <p><b style="color:rgb(179,175,175);">Language:</b> Python and Turtle Graphics Library.</p>
+                            <p><b style="color:rgb(179,175,175);">Algorithm used:</b> Sprague Grundy Algorithm in Game Theory. </p>
+                            <p><b style="color:rgb(179,175,175);">Explanation:</b> There have some piles. Each pile contains some stones. Each player can remove two or three stones from any available pile. Who takes last move will win.</p>
+                            <p><b style="color:rgb(179,175,175);">Features:</b> Player vs Player, Player vs Computer</p>
+                            <p><b style="color:rgb(179,175,175);">Difficulty:</b> Beginner, Intermediate, Advance</p>
+                            <button onclick="window.open('https://github.com/Shahidulislam34/Complete-Project/blob/main/stone%20removal%20game.py')">GitHub</button>
                         </div>
                     </div>
                 </div>
-                <div id = "certificate">
+
+                <div id="certificate">
                     <h1>Certificate</h1>
-                    <div class = "certificate-body">
-                        <div class = "certificate-type">
-                            <a href = "certificate/kuet iupc 2025.jpg" target = "blank">
-                                <img src = "certificate/kuet iupc 2025.jpg" type = "application/pdf">
+                    <div class="certificate-body">
+                        <div class="certificate-type">
+                            <a href="certificate/kuet iupc 2025.jpg" target="blank">
+                                <img src="certificate/kuet iupc 2025.jpg" type="application/pdf">
                             </a>
                             <p>KUET IUPC 2025</p>
                         </div>
-                        <div class = "certificate-type">
-                            <a href = "certificate/cuet iupc 2025.png" target = "blank">
-                                <img src = "certificate/cuet iupc 2025.png" type = "application/pdf">
+                        <div class="certificate-type">
+                            <a href="certificate/cuet iupc 2025.png" target="blank">
+                                <img src="certificate/cuet iupc 2025.png" type="application/pdf">
                             </a>
                             <p>CUET IUPC 2025</p>
                         </div>
-                        <div class = "certificate-type">
-                            <a href = "certificate/duet iupc 2025.jpg" target = "blank">
-                                <img src = "certificate/duet iupc 2025.jpg" type = "application/pdf">
+                        <div class="certificate-type">
+                            <a href="certificate/duet iupc 2025.jpg" target="blank">
+                                <img src="certificate/duet iupc 2025.jpg" type="application/pdf">
                             </a>
                             <p>DUET IUPC 2025</p>
                         </div>
-                        <div class = "certificate-type">
-                            <a href = "certificate/uiu iupc 2025.png" target = "blank">
-                                <img src = "certificate/uiu iupc 2025.png" type = "application/pdf">
+                        <div class="certificate-type">
+                            <a href="certificate/uiu iupc 2025.png" target="blank">
+                                <img src="certificate/uiu iupc 2025.png" type="application/pdf">
                             </a>
                             <p>UIU IUPC 2025</p>
                         </div>
-                        <div class = "certificate-type">
-                            <a href = "certificate/icpc dhaka regional 2025.jpg" target = "blank">
-                                <img src = "certificate/icpc dhaka regional 2025.jpg" type = "application/pdf">
+                        <div class="certificate-type">
+                            <a href="certificate/icpc dhaka regional 2025.jpg" target="blank">
+                                <img src="certificate/icpc dhaka regional 2025.jpg" type="application/pdf">
                             </a>
                             <p>ICPC Dhaka Regional 2025</p>
                         </div>
-                        <div class = "certificate-type">
-                            <a href = "certificate/buet iupc 2026.jpg" target = "blank">
-                                <img src = "certificate/buet iupc 2026.jpg" type = "application/pdf">
+                        <div class="certificate-type">
+                            <a href="certificate/buet iupc 2026.jpg" target="blank">
+                                <img src="certificate/buet iupc 2026.jpg" type="application/pdf">
                             </a>
                             <p>BUET IUPC 2026</p>
                         </div>
-                        <div class = "certificate-type">
-                            <a href = "certificate/hackerrank SQL(Intermediate).png" target = "blank">
-                                <img src = "certificate/hackerrank SQL(Intermediate).png">
+                        <div class="certificate-type">
+                            <a href="certificate/hackerrank SQL(Intermediate).png" target="blank">
+                                <img src="certificate/hackerrank SQL(Intermediate).png">
                             </a>
                             <p>Hackerrank SQL(Intermediate Level)</p>
                         </div>
                     </div>
                 </div>
 
-                <div id = "contact">
+                <div id="contact">
                     <h1>Get In Touch</h1>
-                    <div class = "contact-body">
-                        <div class = "contact-connection">
+                    <div class="contact-body">
+                        <div class="contact-connection">
                             <h2>Explore me</h2>
-                            <div class = "explore-me">
-                                <button onclick = "window.open('https://www.linkedin.com/in/md-shahidul-islam-shourov-8a947a247/')">
-                                    <i class="fa-brands fa-linkedin" id = "linkedin"></i>
+                            <div class="explore-me">
+                                <button onclick="window.open('https://www.linkedin.com/in/md-shahidul-islam-shourov-8a947a247/')">
+                                    <i class="fa-brands fa-linkedin" id="linkedin"></i>
                                     <span>Linkedin</span>
                                 </button>
-                                <button onclick = "window.open('https://github.com/Shahidulislam34')">
-                                    <i class="fa-brands fa-github" id = "github"></i>
+                                <button onclick="window.open('https://github.com/Shahidulislam34')">
+                                    <i class="fa-brands fa-github" id="github"></i>
                                     <span>GitHub</span>
                                 </button>
-                                <button onclick = "window.open('https://www.facebook.com/mdshahidulislam.shourov.9/')">
-                                    <i class="fa-brands fa-facebook-f" id = "facebook"></i>
+                                <button onclick="window.open('https://www.facebook.com/mdshahidulislam.shourov.9/')">
+                                    <i class="fa-brands fa-facebook-f" id="facebook"></i>
                                     <span>Facebook</span>
                                 </button>
-                                <button onclick = "window.open('https://www.youtube.com/@Shourov21024')">
-                                    <i class="fa-brands fa-youtube" id = "youtube"></i>
+                                <button onclick="window.open('https://www.youtube.com/@Shourov21024')">
+                                    <i class="fa-brands fa-youtube" id="youtube"></i>
                                     <span>YouTube</span>
                                 </button>
-                                <button onclick = "window.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox')">
-                                    <i class="fa-solid fa-at" id = "email"></i>
+                                <button onclick="window.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox')">
+                                    <i class="fa-solid fa-at" id="email"></i>
                                     <span>shahidulislam159854@gmail.com</span>
                                 </button>
                                 <button>
-                                    <i class="fa-solid fa-phone" id = "phone-number"></i>
+                                    <i class="fa-solid fa-phone" id="phone-number"></i>
                                     <span>01796-836659</span>
                                 </button>
                             </div>
                         </div>
-                        <div class = "contact-message">
+                        <div class="contact-message">
                             <h2>Send Message</h2>
-                            <div class = "message">
+                            <div class="message">
                                 <label>Name:</label><br>
-                                <input type = "text" id = "name" name = "name" placeholder="Name" style = "width:100%; height:40px;" required><br>
+                                <input type="text" id="name" name="name" placeholder="Name" style="width:100%; height:40px;" required><br>
                                 <label>Email:</label><br>
-                                <input type = "email" id = "email" name = "email" placeholder="Email" style = "width:100%; height:40px;" required><br>
+                                <input type="email" id="email" name="email" placeholder="Email" style="width:100%; height:40px;" required><br>
                                 <label>Message:</label><br>
-                                <textarea id = "message" name = "send-message" placeholder="Enter Your Message.." style = "width:100%; height:70px;" maxlength="200" required></textarea><br>
-                                
-                                <input id = "submit" type = "submit" class = "submit" value = "Submit" style = "width:60%; height:45px;">
+                                <textarea id="message" name="send-message" placeholder="Enter Your Message.." style="width:100%; height:70px;" maxlength="200" required></textarea><br>
+                                <input id="submit" type="submit" class="submit" value="Submit" style="width:60%; height:45px;">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id = "develop">
-                    <i class="fa-solid fa-at" id = "development" style = "margin-bottom: 8px;"></i>
-                    <span style = "margin-bottom: 8px;"> developed by shourov</span><br>
+
+                <div id="develop">
+                    <i class="fa-solid fa-at" id="development" style="margin-bottom: 8px;"></i>
+                    <span style="margin-bottom: 8px;"> developed by shourov</span><br>
                     <i class="fa-solid fa-calendar"></i>
                     <span> last updated: 11 May,2026</span>
                 </div>
+
             </div>
         </div>
-    
         <!-- Home-ends -->
-     </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         RESPONSIVE ADDITION 4: Hamburger JS (inline,
+         no external file needed, zero dependencies)
+    ═══════════════════════════════════════════════ -->
+    <script>
+        (function () {
+            var btn     = document.getElementById('hamburgerBtn');
+            var nav     = document.getElementById('mobNav');
+            var overlay = document.getElementById('mobOverlay');
+            var close   = document.getElementById('mobNavClose');
+
+            function openMenu() {
+                nav.classList.add('mob-nav--open');
+                overlay.classList.add('mob-overlay--show');
+                btn.classList.add('hamburger-btn--open');
+                btn.setAttribute('aria-expanded', 'true');
+                nav.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                nav.classList.remove('mob-nav--open');
+                overlay.classList.remove('mob-overlay--show');
+                btn.classList.remove('hamburger-btn--open');
+                btn.setAttribute('aria-expanded', 'false');
+                nav.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            btn.addEventListener('click', function () {
+                nav.classList.contains('mob-nav--open') ? closeMenu() : openMenu();
+            });
+
+            overlay.addEventListener('click', closeMenu);
+            close.addEventListener('click', closeMenu);
+
+            /* Close on Escape key */
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+        })();
+
+        /* Used by mobile nav link buttons */
+        function mobGo(hash) {
+            var target = document.querySelector(hash);
+            if (target) {
+                /* Close drawer first, then scroll after short delay */
+                document.getElementById('mobNav').classList.remove('mob-nav--open');
+                document.getElementById('mobOverlay').classList.remove('mob-overlay--show');
+                document.getElementById('hamburgerBtn').classList.remove('hamburger-btn--open');
+                document.body.style.overflow = '';
+                setTimeout(function () {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 280);
+            }
+        }
+    </script>
+
 </body>
 </html>

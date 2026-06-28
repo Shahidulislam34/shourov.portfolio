@@ -1,0 +1,728 @@
+/* =====================================================
+   mobile.css  —  RESPONSIVE ADDITIONS ONLY
+   Loaded after desktop-version.css so every rule
+   here either:
+     (a) defines the hamburger / mobile-nav UI, or
+     (b) overrides desktop rules inside a media query.
+   desktop-version.css is never touched.
+   =====================================================
+
+   Breakpoints used:
+     Large desktop : ≥ 1441px
+     Laptop        : 1025 – 1440px   (original styles fine)
+     Tablet        : 768  – 1024px
+     Mobile        : 320  –  767px
+   ===================================================== */
+
+
+/* ─────────────────────────────────────────────────────
+   1.  GLOBAL RESPONSIVE BASE
+   ───────────────────────────────────────────────────── */
+
+/* NOTE: overflow-x:hidden is intentionally NOT set on
+   html/body — it would silently break position:sticky
+   on the desktop profile sidebar (known browser bug).
+   Overflow is instead clipped per-section inside the
+   media queries below where it cannot reach sticky. */
+
+/* All images are responsive by default */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* profile-bottom-row: on desktop it is just a transparent
+   pass-through wrapper so existing desktop styles are
+   unaffected. Tablet styles activate inside the media query. */
+.profile-bottom-row {
+    display: contents;   /* children behave as direct .profile children */
+}
+
+/* ── Profile picture pulse animation (used on tablet + mobile) ── */
+@keyframes profilePulse {
+    0%   { box-shadow: 0 0 0 0px rgba(161, 121, 216, 0.7); }
+    50%  { box-shadow: 0 0 0 12px rgba(161, 121, 216, 0.0); }
+    100% { box-shadow: 0 0 0 0px rgba(161, 121, 216, 0.0); }
+}
+
+/* ─────────────────────────────────────────────────────
+   2.  HAMBURGER BUTTON
+   (hidden on desktop, shown on tablet + mobile)
+   ───────────────────────────────────────────────────── */
+
+.hamburger-btn {
+    display: none;           /* hidden on desktop */
+    position: fixed;
+    top: 12px;
+    right: 14px;
+    z-index: 9000;
+    width: 44px;
+    height: 44px;
+    background-color: #1D1D1D;
+    border: 1px solid #333;
+    border-radius: 8px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s;
+}
+
+.hamburger-btn:hover {
+    background-color: #2a2a2a;
+}
+
+.ham-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #cfc5c5;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Animated X when open */
+.hamburger-btn--open .ham-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn--open .ham-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger-btn--open .ham-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   3.  DARK OVERLAY (behind mobile nav drawer)
+   ───────────────────────────────────────────────────── */
+
+.mob-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 8000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mob-overlay--show {
+    display: block;
+    opacity: 1;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   4.  MOBILE NAV DRAWER
+   ───────────────────────────────────────────────────── */
+
+.mob-nav {
+    position: fixed;
+    top: 0;
+    right: -290px;          /* start off-screen */
+    width: 280px;
+    height: 100dvh;         /* dynamic viewport height */
+    background-color: #1a1a1a;
+    border-left: 1px solid #2a2a2a;
+    z-index: 8500;
+    padding: 64px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.mob-nav--open {
+    right: 0;
+}
+
+/* Close (×) button inside drawer */
+.mob-nav-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #ccc;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+.mob-nav-close:hover {
+    background-color: #2a2a2a;
+}
+
+.mob-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mob-nav ul li button {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 16px;
+    color: rgb(207, 197, 197);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background-color 0.18s, color 0.18s;
+    font-family: sans-serif;
+}
+
+.mob-nav ul li button:hover {
+    background-color: rgba(161, 121, 216, 0.18);
+    color: #a179d8;
+}
+
+.mob-nav ul li button i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   5.  LARGE DESKTOP  ≥ 1441px
+   Slightly more breathing room — no layout changes
+   ───────────────────────────────────────────────────── */
+
+@media (min-width: 1441px) {
+
+    .main .profile {
+        width: 22%;
+    }
+
+    .main #desc {
+        width: 75%;
+    }
+
+    #home h1 {
+        font-size: 3rem;
+    }
+
+    #home .bio1 {
+        font-size: 1.3rem;
+    }
+
+}
+
+
+/* ─────────────────────────────────────────────────────
+   6.  TABLET  768px – 1024px
+   ───────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+
+    /* Show hamburger, hide desktop navbar */
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .navbar {
+        display: none !important;
+    }
+
+    /* ── Container ── */
+    #container {
+        align-items: flex-start;
+    }
+
+    /* ── Main layout: stack vertically ── */
+    .main {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    /* ── Profile card: full-width strip at top ── */
+    .main .profile {
+        width: calc(100% - 32px);
+        max-width: 680px;
+        min-height: auto;
+        margin: 16px auto;
+        padding: 24px 20px;
+        position: relative;
+        top: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .main .profile > img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 4px;
+        border: 3px solid #a179d8;
+        box-shadow: 0 0 0 0 rgba(161, 121, 216, 0.7);
+        animation: profilePulse 2.5s infinite ease-in-out;
+    }
+
+    .main .profile h2,
+    .main .profile p {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Social icons + Let's Talk: side by side with gap */
+    .main .profile .connect {
+        margin-bottom: 0;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    /* Row that holds .connect and .chat: stack vertically on tablet */
+    .profile-bottom-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .main .profile .chat {
+        margin: 0;
+    }
+
+    /* ── Description area: full width ── */
+    .main #desc {
+        width: 100%;
+        margin: 0;
+        padding: 0 16px;
+        gap: 30px;
+    }
+
+    /* ── Home section ── */
+    #home {
+        margin: 20px 0;
+        padding: 24px 16px;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    #home .bio1 {
+        font-size: 18px;
+    }
+
+    #home .bio2 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #home .addaccount {
+        gap: 16px;
+        justify-content: center;
+    }
+
+    #home .addaccount > button {
+        min-width: 130px;
+    }
+
+    #home .cv {
+        gap: 40px;
+    }
+
+    /* ── About ── */
+    #about .headline,
+    #education .headline,
+    #skill .headline,
+    #project > h1,
+    #certificate > h1,
+    #contact > h1 {
+        padding-top: 50px;
+    }
+
+    #about .description {
+        padding: 28px;
+        font-size: 16px;
+    }
+
+    /* ── Education: 2 columns, last row starts from left ── */
+    #education .degree {
+        justify-content: flex-start;
+        gap: 24px;
+    }
+
+    #education .degree .degree-type {
+        width: calc(50% - 24px);
+        flex: 0 0 calc(50% - 24px);
+    }
+
+    /* ── Skills: 2 columns, centered, last row starts from left ── */
+    #skill .skill-body {
+        justify-content: center;
+    }
+
+    #skill .skill-body .skill-type {
+        max-width: calc(50% - 30px);
+        flex: 0 0 calc(50% - 30px);
+    }
+
+    /* Ghost element forces last-row skill item to align left */
+    #skill .skill-body::after {
+        content: '';
+        flex: 0 0 calc(50% - 30px);
+        max-width: calc(50% - 30px);
+    }
+
+    /* ── Project: full width ── */
+    #project .project-body .project-type {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    /* ── Certificates: 2 columns, centered (grid is more reliable here) ── */
+    #certificate .certificate-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    #certificate .certificate-body .certificate-type {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    /* ── Contact: stack ── */
+    #contact .contact-body {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #contact .contact-body .contact-connection {
+        width: 100%;
+    }
+
+    #contact .contact-body .contact-message {
+        width: 100%;
+        margin: 0;
+        padding: 28px;
+    }
+
+}
+
+
+/* ─────────────────────────────────────────────────────
+   7.  MOBILE  320px – 767px
+   ───────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+
+    /* ── Profile: compact centered column ── */
+    .main .profile {
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 24px);
+        padding: 20px 12px;
+        margin: 12px auto;
+    }
+
+    /* Row that holds .connect and .chat: stack on mobile */
+    .profile-bottom-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .main .profile .chat {
+        margin: 0;
+    }
+
+    .main .profile > img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #a179d8;
+        box-shadow: 0 0 0 0 rgba(161, 121, 216, 0.7);
+        animation: profilePulse 2.5s infinite ease-in-out;
+    }
+
+    /* ── Desc area ── */
+    .main #desc {
+        padding: 0 12px;
+        gap: 20px;
+    }
+
+    /* ── Home ── */
+    #home {
+        padding: 20px 8px;
+        margin: 10px 0;
+    }
+
+    #home h1 {
+        font-size: 1.6rem;
+    }
+
+    #home .bio1 {
+        font-size: 15px;
+    }
+
+    #home .bio2 {
+        font-size: 14px;
+    }
+
+    /* Judge account buttons: 2-col grid on mobile */
+    #home .addaccount {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 12px 0;
+    }
+
+    #home .addaccount > button {
+        min-width: unset;
+        width: 100%;
+    }
+
+    /* CV buttons: side by side */
+    #home .cv {
+        gap: 16px;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    #home .cv button {
+        font-size: 15px;
+        padding: 8px 14px;
+        min-width: auto;
+    }
+
+    /* ── Section headlines ── */
+    #about .headline,
+    #education .headline,
+    #skill .headline,
+    #project > h1,
+    #certificate > h1,
+    #contact > h1 {
+        font-size: 1.5rem;
+        padding-top: 36px;
+    }
+
+    /* ── About ── */
+    #about {
+        margin: 10px 0;
+    }
+
+    #about .description {
+        padding: 18px;
+        font-size: 14px;
+        line-height: 1.65;
+        border-radius: 16px;
+    }
+
+    /* ── Education: single column ── */
+    #education {
+        margin: 10px 0;
+    }
+
+    #education .degree {
+        flex-direction: column;
+        gap: 16px;
+        padding: 8px;
+    }
+
+    #education .degree .degree-type {
+        width: 100%;
+    }
+
+    #education .degree .degree-type > img {
+        height: 130px;
+        width: 95%;
+    }
+
+    #education .degree .degree-type .description p {
+        font-size: 14px;
+    }
+
+    /* ── Skills: single column ── */
+    #skill {
+        margin: 10px 0;
+    }
+
+    #skill .skill-body {
+        flex-direction: column;
+        padding: 8px;
+        gap: 16px;
+    }
+
+    #skill .skill-body .skill-type {
+        max-width: 100%;
+        width: 100%;
+        padding: 16px;
+    }
+
+    #skill .skill-body .skill-type p {
+        font-size: 17px;
+    }
+
+    #skill .skill-body .skill-type .description span {
+        font-size: 14px;
+    }
+
+    /* ── Project ── */
+    #project {
+        margin: 10px 0;
+    }
+
+    #project .project-body {
+        padding: 8px;
+    }
+
+    #project .project-body .project-type {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 18px;
+    }
+
+    #project .project-body .project-type p {
+        font-size: 15px;
+    }
+
+    #project .project-body .project-type button {
+        width: 60%;
+        font-size: 15px;
+    }
+
+    /* ── Certificates: single column, centered ── */
+    #certificate {
+        margin: 10px 0;
+    }
+
+    #certificate .certificate-body {
+        flex-direction: column;
+        align-items: center;   /* centres each card horizontally */
+        padding: 8px;
+        gap: 12px;
+    }
+
+    #certificate .certificate-body .certificate-type {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 12px;
+        align-items: center;   /* centres image + label inside the card */
+    }
+
+    #certificate .certificate-body .certificate-type a img {
+        height: auto;
+        max-height: 220px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    /* ── Contact ── */
+    #contact {
+        margin: 10px 0;
+    }
+
+    #contact .contact-body {
+        padding: 8px;
+        gap: 16px;
+    }
+
+    #contact .contact-body .contact-connection {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    #contact .contact-body .contact-message {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    #contact .contact-body .contact-message .message input,
+    #contact .contact-body .contact-message .message textarea {
+        font-size: 14px;
+    }
+
+    #contact .contact-body .contact-message .message .submit {
+        width: 80%;
+        font-size: 17px;
+    }
+
+    /* ── Develop footer ── */
+    #develop {
+        text-align: center;
+        padding: 16px;
+        font-size: 13px;
+    }
+
+}
+
+
+/* ─────────────────────────────────────────────────────
+   8.  EXTRA SMALL MOBILE  ≤ 380px
+   ───────────────────────────────────────────────────── */
+
+@media (max-width: 380px) {
+
+    #home h1 {
+        font-size: 1.35rem;
+    }
+
+    #home .addaccount {
+        grid-template-columns: 1fr;   /* 1 col on very small screens */
+    }
+
+    #home .cv {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #home .cv button {
+        width: 80%;
+    }
+
+    .main .profile > img {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #a179d8;
+        animation: profilePulse 2.5s infinite ease-in-out;
+    }
+
+    #contact .contact-body .contact-message .message .submit {
+        width: 95%;
+    }
+
+    /* ── Certificate: 1 column on extra small ── */
+    #certificate .certificate-body {
+        grid-template-columns: 1fr;
+    }
+
+}
