@@ -1418,3 +1418,181 @@
     text-align:center;
 }
 /* contact section end */
+
+
+/* ═══════════════════════════════════════════════════
+   ACHIEVEMENTS SECTION
+   — Sizes match project/certificate exactly (req 5):
+     width: calc(50% - 50px), gap: 50px, padding: 20px
+   — Ghost ::after keeps last card left-aligned (req 7)
+   ═══════════════════════════════════════════════════ */
+#achievements {
+    width:100%;
+    height:auto;
+    margin:20px;
+    border-radius:20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+#achievements > h1 {
+    margin-bottom:10px;
+    font-size:2rem;
+    font-weight:bolder;
+    padding-top:100px;
+    color:rgb(207,197,197);
+}
+
+/* Short description line under heading */
+#achievements .achievements-sub {
+    font-size:15px;
+    color:rgb(138,134,134);
+    margin-bottom:30px;
+    text-align:center;
+    padding:0 20px;
+}
+
+/* Same body layout as .certificate-body and .project-body */
+#achievements .achievement-body {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:flex-start;    /* req 7: last row starts from left */
+    align-items:stretch;
+    gap:50px;                      /* same as project/certificate gap */
+
+    width:100%;
+    height:auto;
+    padding:20px;                  /* same padding */
+    border-radius:20px;
+}
+
+/* Ghost element keeps the lone last card left-aligned (req 7) */
+#achievements .achievement-body::after {
+    content:'';
+    flex: 0 0 calc(50% - 50px);   /* same as card width */
+    width: calc(50% - 50px);
+}
+
+/* Card — same width formula as certificate-type and project-type */
+#achievements .achievement-body .achievement-type {
+    width:calc(50% - 50px);       /* desktop: 2 per row (req 6) */
+    flex: 0 0 calc(50% - 50px);
+    height:auto;
+    margin:0;
+    border-radius:20px;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+
+    background: rgba(29,29,29,0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(161,121,216,0.14);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.38);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#achievements .achievement-body .achievement-type:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 14px 44px rgba(0,0,0,0.5), 0 0 22px rgba(161,121,216,0.2);
+    border-color: rgba(161,121,216,0.42);
+}
+
+/* Image wrapper — fixed height so all images look uniform */
+#achievements .achievement-body .achievement-type .achievement-img-wrap {
+    position:relative;
+    width:100%;
+    height:220px;                  /* same height as certificate images */
+    overflow:hidden;
+}
+
+#achievements .achievement-body .achievement-type .achievement-img-wrap img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    display:block;
+    border-radius:0;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+#achievements .achievement-body .achievement-type:hover .achievement-img-wrap img {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(161,121,216,0.3);
+}
+
+/* Gradient fade from image into card body */
+#achievements .achievement-body .achievement-type .achievement-img-wrap::after {
+    content:'';
+    position:absolute;
+    bottom:0; left:0; right:0;
+    height:55px;
+    background:linear-gradient(to top, rgba(20,18,28,0.85), transparent);
+    pointer-events:none;
+}
+
+/* Badge chip — top-right corner of image */
+#achievements .achievement-body .achievement-type .achievement-badge {
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:rgba(161,121,216,0.9);
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    letter-spacing:0.3px;
+    backdrop-filter:blur(6px);
+    z-index:2;
+}
+
+/* Text area */
+#achievements .achievement-body .achievement-type .achievement-info {
+    padding:18px 22px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    flex:1;
+    width:100%;
+}
+
+#achievements .achievement-body .achievement-type .achievement-heading {
+    font-size:1rem;
+    font-weight:800;
+    color:#e0d8f0;
+    letter-spacing:0.4px;
+    margin:0;
+    line-height:1.4;
+}
+
+/* Accent underline beneath heading */
+#achievements .achievement-body .achievement-type .achievement-heading::after {
+    content:'';
+    display:block;
+    width:36px;
+    height:2px;
+    background:linear-gradient(90deg, #a179d8, #0A66C2);
+    border-radius:2px;
+    margin-top:7px;
+}
+
+#achievements .achievement-body .achievement-type .achievement-desc {
+    font-size:14px;
+    color:rgb(160,155,155);
+    line-height:1.65;
+    margin:0;
+}
+/* achievements section end */
+

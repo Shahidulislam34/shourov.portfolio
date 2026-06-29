@@ -410,6 +410,7 @@ img {
     #education .headline,
     #skill .headline,
     #project > h1,
+    #achievements > h1,
     #certificate > h1,
     #contact > h1 {
         padding-top: 50px;
@@ -455,6 +456,22 @@ img {
     #project .project-body .project-type {
         max-width: 100%;
         margin: 0;
+    }
+
+    /* ── Achievements: 2 per row on tablet (desktop gap is 50px; tablet gap tighter) ── */
+    #achievements .achievement-body {
+        gap: 20px;
+        padding: 12px;
+    }
+
+    #achievements .achievement-body .achievement-type {
+        width: calc(50% - 20px);
+        flex: 0 0 calc(50% - 20px);
+    }
+
+    #achievements .achievement-body::after {
+        flex: 0 0 calc(50% - 20px);
+        width: calc(50% - 20px);
     }
 
     /* ── Certificates: 2 columns, centered (grid is more reliable here) ── */
@@ -592,6 +609,7 @@ img {
     #education .headline,
     #skill .headline,
     #project > h1,
+    #achievements > h1,
     #certificate > h1,
     #contact > h1 {
         font-size: 1.5rem;
@@ -731,6 +749,52 @@ img {
         font-size: 15px;
         align-self: center;
         margin: 16px auto 20px;
+    }
+
+    /* ── Achievements: 1 per row on mobile (req 6) ── */
+    #achievements {
+        margin: 10px 0;
+    }
+
+    #achievements .achievements-sub {
+        font-size: 13px;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+
+    #achievements .achievement-body {
+        flex-direction: column;
+        padding: 8px;
+        gap: 16px;
+    }
+
+    /* Hide ghost element on mobile — not needed for single column */
+    #achievements .achievement-body::after {
+        display: none;
+    }
+
+    #achievements .achievement-body .achievement-type {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;   /* override desktop flex-basis */
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #achievements .achievement-body .achievement-type .achievement-img-wrap {
+        height: 190px;
+    }
+
+    #achievements .achievement-body .achievement-type .achievement-info {
+        padding: 14px 16px 18px;
+    }
+
+    #achievements .achievement-body .achievement-type .achievement-heading {
+        font-size: 0.95rem;
+    }
+
+    #achievements .achievement-body .achievement-type .achievement-desc {
+        font-size: 13px;
     }
 
     /* ── Certificates: single column ── */

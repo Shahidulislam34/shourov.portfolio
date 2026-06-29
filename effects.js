@@ -481,6 +481,7 @@
         '#education .headline',
         '#skill .headline',
         '#project > h1',
+        '#achievements > h1',
         '#certificate > h1',
         '#contact > h1',
     ];
@@ -491,6 +492,7 @@
         '#education .degree-type',
         '#skill .skill-type',
         '#project .project-type',
+        '#achievements .achievement-type',
         '#certificate .certificate-type',
         '#contact .contact-connection',
         '#contact .contact-message',
