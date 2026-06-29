@@ -412,6 +412,7 @@ img {
     #project > h1,
     #achievements > h1,
     #certificate > h1,
+    #Gallery > h1,
     #contact > h1 {
         padding-top: 50px;
     }
@@ -487,6 +488,23 @@ img {
         max-width: 100%;
         width: 100%;
         margin: 0;
+    }
+
+    /* ── Gallery: 2 columns on tablet ── */
+    #Gallery .gallery-body {
+        gap: 20px;
+        padding: 12px;
+    }
+
+    #Gallery .gallery-body .gallery-item {
+        width: calc(50% - 20px);
+        flex: 0 0 calc(50% - 20px);
+        height: 180px;
+    }
+
+    #Gallery .gallery-body::after {
+        flex: 0 0 calc(50% - 20px);
+        width: calc(50% - 20px);
     }
 
     /* ── Contact: stack ── */
@@ -611,6 +629,7 @@ img {
     #project > h1,
     #achievements > h1,
     #certificate > h1,
+    #Gallery > h1,
     #contact > h1 {
         font-size: 1.5rem;
         padding-top: 36px;
@@ -827,6 +846,30 @@ img {
         max-height: 220px;
         width: 100%;
         object-fit: cover;
+    }
+
+    /* ── Gallery: single column on mobile ── */
+    #Gallery {
+        margin: 10px 0;
+    }
+
+    #Gallery .gallery-body {
+        flex-direction: column;
+        padding: 8px;
+        gap: 16px;
+    }
+
+    #Gallery .gallery-body::after {
+        display: none;
+    }
+
+    #Gallery .gallery-body .gallery-item {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+        height: 200px;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     /* ── Contact ── */

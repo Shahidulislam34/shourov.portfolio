@@ -1596,3 +1596,88 @@
 }
 /* achievements section end */
 
+
+/* ═══════════════════════════════════════════════════
+   GALLERY SECTION
+   — Same layout pattern as achievements/certificate
+   ═══════════════════════════════════════════════════ */
+#Gallery {
+    width:100%;
+    height:auto;
+    margin:20px;
+    border-radius:20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+#Gallery > h1 {
+    text-align:center;
+    margin-bottom:40px;
+    font-size:2rem;
+    font-weight:bolder;
+    padding-top:100px;
+    color:rgb(207,197,197);
+}
+
+#Gallery .gallery-body {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    align-items:stretch;
+    gap:50px;
+
+    width:100%;
+    height:auto;
+    padding:20px;
+    border-radius:20px;
+}
+
+/* Ghost keeps last-row item left-aligned */
+#Gallery .gallery-body::after {
+    content:'';
+    flex: 0 0 calc(33.333% - 40px);
+    width: calc(33.333% - 40px);
+}
+
+#Gallery .gallery-body .gallery-item {
+    width: calc(33.333% - 40px);
+    flex: 0 0 calc(33.333% - 40px);
+    height:220px;
+    margin:0;
+    border-radius:16px;
+    overflow:hidden;
+
+    background: rgba(29,29,29,0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(161,121,216,0.14);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.38);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#Gallery .gallery-body .gallery-item:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 14px 44px rgba(0,0,0,0.5), 0 0 22px rgba(161,121,216,0.25);
+    border-color: rgba(161,121,216,0.45);
+}
+
+#Gallery .gallery-body .gallery-item img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+    transition: transform 0.4s ease;
+}
+
+#Gallery .gallery-body .gallery-item:hover img {
+    transform: scale(1.07);
+}
+/* gallery section end */
+
+
