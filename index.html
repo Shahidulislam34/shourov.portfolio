@@ -114,10 +114,12 @@
             <div id="desc">
 
                 <div id="home">
-                    <h1>Hi, I'm Shourov!!</h1>
-                    <p class="bio1">
-                        A Fresh Graduate from the ICT department at MBSTU with CGPA 3.75 and strong focused on Competitive Programming and Problem Solving
-                    </p>
+                    <div class="hero-text">
+                        <h1><span class="greeting">Hi, I'm</span> <span class="hero-name">Shourov</span><span class="hero-bang">!!</span></h1>
+                        <p class="bio1">
+                            A <span class="bio-highlight">Fresh Graduate</span> from the <span class="bio-highlight">ICT department at MBSTU</span> with <span class="bio-badge">CGPA&nbsp;3.75</span> and strong focused on <span class="bio-highlight">Competitive Programming</span> and <span class="bio-highlight">Problem Solving</span>
+                        </p>
+                    </div>
                     <p class="bio2">
                         Competitive Programmer | Problem Solver | Aspiring Software Engineer
                     </p>
@@ -222,11 +224,22 @@
                 <div id="skill">
                     <h1 class="headline">Technical Skills</h1>
                     <div class="skill-body">
-                        <div class="skill-type">
-                            <p>Data-Structures and Algorithms</p>
+
+                        <!-- DSA -->
+                        <div class="skill-type" data-category="dsa">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-wrap">
+                                    <i class="fa-solid fa-diagram-project"></i>
+                                </div>
+                                <div class="skill-title-wrap">
+                                    <p class="skill-title">Data Structures & Algorithms</p>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skill-divider"></div>
                             <div class="description">
                                 <span>Graph</span>
-                                <span>DP</span>
+                                <span>Dynamic Programming</span>
                                 <span>Greedy</span>
                                 <span>Segment Tree</span>
                                 <span>Mathematics</span>
@@ -236,53 +249,97 @@
                                 <span>Game Theory</span>
                             </div>
                         </div>
-                        <div class="skill-type">
-                            <p>Programming Languages</p>
-                            <div class="description">
-                                <span><img src="Icons/c.svg" width="40px"></span>
-                                <span><img src="Icons/cpp.svg" width="40px"></span>
-                                <span><img src="Icons/java.svg" width="40px"></span>
-                                <span><img src="Icons/python.svg" width="40px"></span>
-                                <span><img src="Icons/html.png" width="40px"></span>
-                                <span><img src="Icons/css.png" width="40px"></span>
-                                <span><img src="Icons/js.png" width="40px"></span>
+
+                        <!-- Programming Languages -->
+                        <div class="skill-type" data-category="lang">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-wrap">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div class="skill-title-wrap">
+                                    <p class="skill-title">Programming Languages</p>
+                                    <span class="skill-level">Proficient</span>
+                                </div>
+                            </div>
+                            <div class="skill-divider"></div>
+                            <div class="description lang-icons">
+                                <span class="lang-tag"><img src="Icons/c.svg" width="32px"><label>C</label></span>
+                                <span class="lang-tag"><img src="Icons/cpp.svg" width="32px"><label>C++</label></span>
+                                <span class="lang-tag"><img src="Icons/java.svg" width="32px"><label>Java</label></span>
+                                <span class="lang-tag"><img src="Icons/python.svg" width="32px"><label>Python</label></span>
+                                <span class="lang-tag"><img src="Icons/html.png" width="32px"><label>HTML</label></span>
+                                <span class="lang-tag"><img src="Icons/css.png" width="32px"><label>CSS</label></span>
+                                <span class="lang-tag"><img src="Icons/js.png" width="32px"><label>JS</label></span>
                             </div>
                         </div>
-                        <div class="skill-type">
-                            <p>Problem Solving</p>
+
+                        <!-- Problem Solving -->
+                        <div class="skill-type" data-category="ps">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-wrap">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <div class="skill-title-wrap">
+                                    <p class="skill-title">Problem Solving</p>
+                                    <span class="skill-level skill-level--gold">3000+ Solves</span>
+                                </div>
+                            </div>
+                            <div class="skill-divider"></div>
                             <div class="description">
-                                <span>Codeforces: 1500+ Solve</span>
-                                <span>Codechef: 300+</span>
-                                <span>Atcoder: 200+</span>
-                                <span>Leetcode: 300+</span>
-                                <span>CSES: 200+</span>
-                                <span>Vjudge: 300+</span>
-                                <span>Overall: 3000+ solve in many online judge</span>
+                                <span class="solve-tag"><i class="fa-solid fa-star solve-icon"></i>Codeforces<em>1500+</em></span>
+                                <span class="solve-tag"><i class="fa-solid fa-star solve-icon"></i>Codechef<em>300+</em></span>
+                                <span class="solve-tag"><i class="fa-solid fa-star solve-icon"></i>Atcoder<em>200+</em></span>
+                                <span class="solve-tag"><i class="fa-solid fa-star solve-icon"></i>Leetcode<em>300+</em></span>
+                                <span class="solve-tag"><i class="fa-solid fa-star solve-icon"></i>CSES<em>200+</em></span>
+                                <span class="solve-tag"><i class="fa-solid fa-star solve-icon"></i>Vjudge<em>300+</em></span>
                             </div>
                         </div>
-                        <div class="skill-type">
-                            <p>Soft Skills</p>
-                            <div class="description">
-                                <span><b style="color:rgb(179,175,175);">Mentorship:</b> Served as the Competitive Programming trainer for juniors at MBSTU.</span>
-                                <span><b style="color:rgb(179,175,175);">Leadership:</b> Served as the CP Secretary in my department at mbstu.</span>
-                                <span><b style="color:rgb(179,175,175);">Teamwork and Collaboration:</b> Participated 10+ national contest.</span>
-                                <span><b style="color:rgb(179,175,175);">Good Player:</b> Won emerging player award in ICT intra department football tournament at MBSTU.</span>
-                                <span><b style="color:rgb(179,175,175);">First Prize:</b> Race Competition at high school level.</span>
+
+                        <!-- Soft Skills -->
+                        <div class="skill-type" data-category="soft">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-wrap">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <div class="skill-title-wrap">
+                                    <p class="skill-title">Soft Skills</p>
+                                    <span class="skill-level">Leadership</span>
+                                </div>
+                            </div>
+                            <div class="skill-divider"></div>
+                            <div class="description soft-list">
+                                <span class="soft-tag"><i class="fa-solid fa-chalkboard-user soft-icon"></i><span class="soft-body"><b>Mentorship</b> — CP trainer for juniors at MBSTU</span></span>
+                                <span class="soft-tag"><i class="fa-solid fa-crown soft-icon"></i><span class="soft-body"><b>Leadership</b> — CP Secretary at MBSTU dept.</span></span>
+                                <span class="soft-tag"><i class="fa-solid fa-handshake soft-icon"></i><span class="soft-body"><b>Teamwork</b> — 10+ national contests</span></span>
+                                <span class="soft-tag"><i class="fa-solid fa-futbol soft-icon"></i><span class="soft-body"><b>Sports</b> — Emerging player award, ICT football</span></span>
+                                <span class="soft-tag"><i class="fa-solid fa-medal soft-icon"></i><span class="soft-body"><b>First Prize</b> — Race competition, high school</span></span>
                             </div>
                         </div>
-                        <div class="skill-type">
-                            <p>Software Developments</p>
+
+                        <!-- Software Dev -->
+                        <div class="skill-type" data-category="dev">
+                            <div class="skill-card-header">
+                                <div class="skill-icon-wrap">
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                </div>
+                                <div class="skill-title-wrap">
+                                    <p class="skill-title">Software Development</p>
+                                    <span class="skill-level">Tools & Stack</span>
+                                </div>
+                            </div>
+                            <div class="skill-divider"></div>
                             <div class="description">
                                 <span>OOP</span>
-                                <span>MySQL(5* at Hackerrank)</span>
-                                <span>Git/GitHub</span>
-                                <span>Vs Code</span>
+                                <span>MySQL <em style="color:#f0c040;">★★★★★</em></span>
+                                <span>Git / GitHub</span>
+                                <span>VS Code</span>
                                 <span>Visual Studio</span>
                                 <span>Codeblocks</span>
                                 <span>Windows</span>
                                 <span>Linux</span>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -290,7 +347,18 @@
                     <h1>Projects</h1>
                     <div class="project-body">
                         <div class="project-type">
-                            <h2>Stone Removal Game</h2>
+                            <div class="project-card-header">
+                                <div class="project-icon-wrap">
+                                    <i class="fa-solid fa-gamepad"></i>
+                                </div>
+                                <div class="project-title-meta">
+                                    <h2 class="project-title-text">Stone Removal Game</h2>
+                                    <div class="project-badges">
+                                        <span class="proj-badge proj-badge--lang"><i class="fa-brands fa-python"></i> Python</span>
+                                        <span class="proj-badge proj-badge--algo"><i class="fa-solid fa-brain"></i> Game Theory</span>
+                                    </div>
+                                </div>
+                            </div>
                             <img src="images/game.png">
                             <p><b style="color:rgb(179,175,175);">Language:</b> Python and Turtle Graphics Library.</p>
                             <p><b style="color:rgb(179,175,175);">Algorithm used:</b> Sprague Grundy Algorithm in Game Theory. </p>

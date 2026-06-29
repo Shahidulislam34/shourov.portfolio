@@ -148,13 +148,13 @@
     /* ── Draw mouse glow ── */
     function drawMouseGlow() {
         if (mouse.x < 0) return;
-        const r = CFG.mouseRadius * 1.2;
+        const r = CFG.mouseRadius * 0.7;
         const grd = ctx.createRadialGradient(
             mouse.x, mouse.y, 0,
             mouse.x, mouse.y, r
         );
-        grd.addColorStop(0,   `rgba(${CFG.colorBase},0.22)`);
-        grd.addColorStop(0.4, `rgba(${CFG.colorBase},0.10)`);
+        grd.addColorStop(0,   `rgba(${CFG.colorBase},0.16)`);
+        grd.addColorStop(0.4, `rgba(${CFG.colorBase},0.07)`);
         grd.addColorStop(1,   `rgba(${CFG.colorBase},0)`);
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, r, 0, Math.PI * 2);
@@ -164,12 +164,12 @@
         /* Inner bright core */
         const core = ctx.createRadialGradient(
             mouse.x, mouse.y, 0,
-            mouse.x, mouse.y, 28
+            mouse.x, mouse.y, 16
         );
-        core.addColorStop(0, `rgba(${CFG.colorBase},0.35)`);
+        core.addColorStop(0, `rgba(${CFG.colorBase},0.45)`);
         core.addColorStop(1, `rgba(${CFG.colorBase},0)`);
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 28, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 16, 0, Math.PI * 2);
         ctx.fillStyle = core;
         ctx.fill();
     }
@@ -199,43 +199,53 @@
     /* Hide the native cursor site-wide */
     const style = document.createElement('style');
     style.textContent = `
-        * { cursor: none !important; }
+        /* Hide native cursor everywhere except interactive elements */
+        *:not(a):not(button):not([role="button"]):not(input):not(textarea):not(select):not(label) {
+            cursor: none !important;
+        }
+
+        /* Interactive elements show native pointer */
+        a, button, [role="button"], input, textarea, select, label,
+        .navbar ul li, .certificate-type {
+            cursor: pointer !important;
+        }
 
         #customCursorOuter {
             position: fixed;
-            width: 36px;
-            height: 36px;
-            border: 2px solid rgba(161,121,216,0.7);
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(120, 70, 200, 0.85);
             border-radius: 50%;
             pointer-events: none;
             z-index: 999999;
             transform: translate(-50%, -50%);
-            transition: width .2s, height .2s, border-color .2s, background .2s;
+            transition: width .18s, height .18s, border-color .18s, background .18s;
             will-change: transform;
         }
         #customCursorDot {
             position: fixed;
-            width: 7px;
-            height: 7px;
-            background: #a179d8;
+            width: 6px;
+            height: 6px;
+            background: #7c3aed;
             border-radius: 50%;
             pointer-events: none;
             z-index: 999999;
             transform: translate(-50%, -50%);
             will-change: transform;
+            box-shadow: 0 0 4px rgba(124,58,237,0.8);
         }
 
         /* Hover state — triggered via JS class */
         #customCursorOuter.is-hovering {
-            width: 52px;
-            height: 52px;
-            border-color: rgba(10,102,194,0.8);
-            background: rgba(10,102,194,0.08);
+            width: 40px;
+            height: 40px;
+            border-color: rgba(10,102,194,0.95);
+            background: rgba(10,102,194,0.1);
         }
         #customCursorOuter.is-clicking {
-            width: 24px;
-            height: 24px;
-            background: rgba(161,121,216,0.2);
+            width: 22px;
+            height: 22px;
+            background: rgba(124,58,237,0.22);
         }
     `;
     document.head.appendChild(style);
